@@ -17,7 +17,7 @@ def colorize_with_richard():
     net = caffe.Net('./colorization_deploy_v2.prototxt', dir_model, caffe.TEST)
     (H_in, W_in) = net.blobs['data_l'].data.shape[2:]  # get input shape
     (H_out, W_out) = net.blobs['class8_ab'].data.shape[2:]  # get output shape
-    pts_in_hull = np.load('/home/jiange/dl/colorization/resources/pts_in_hull.npy')  # load cluster centers
+    pts_in_hull = np.load('./resources/pts_in_hull.npy')  # load cluster centers
     # populate cluster centers as 1x1 convolution kernel
     net.params['class8_ab'][0].data[:, :, 0, 0] = pts_in_hull.transpose((1, 0))
 
@@ -50,7 +50,6 @@ def colorize_with_jiange():
     # dir_model = '/home/jiange/dl_model/colorization/fine_tuning_model/colorization_iter_50000.caffemodel'
     # dir_model = '/home/jiange/dl_model/colorization/colorization_release_v2_norebal.caffemodel'
     dir_model = '/home/jiange/dl_model/colorization/20170224/colorization_iter_49000.caffemodel'
-
     dir_input = '/home/jiange/dl_data/colorization/img_test_500/'
     dir_output = '/home/jiange/dl_data/colorization/img_output_jiange_49k/'
 
@@ -60,7 +59,7 @@ def colorize_with_jiange():
     net = caffe.Net('./colorization_deploy_v2.prototxt', dir_model, caffe.TEST)
     (H_in, W_in) = net.blobs['data_l'].data.shape[2:]  # get input shape
     (H_out, W_out) = net.blobs['class8_ab'].data.shape[2:]  # get output shape
-    pts_in_hull = np.load('/home/jiange/dl/colorization/resources/pts_in_hull.npy')  # load cluster centers
+    pts_in_hull = np.load('./resources/pts_in_hull.npy')  # load cluster centers
     # populate cluster centers as 1x1 convolution kernel
     net.params['class8_ab'][0].data[:, :, 0, 0] = pts_in_hull.transpose((1, 0))
 
